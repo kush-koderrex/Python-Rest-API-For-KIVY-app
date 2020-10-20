@@ -14,44 +14,20 @@ import os
 
 app = Flask(__name__)
 app.secret_key="super-secret-key"
-app.config['UPLOAD_FOLDER']='F:\\kivy app for monu bahiya\\monu bhiya flask\\static\\img'
+app.config['UPLOAD_FOLDER']='Static folder path'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/koder'
 
 app.config.update(
     MAIL_SERVER = 'smtp.gmail.com',
     MAIL_PORT = '465',
     MAIL_USE_SSL = True,
-    MAIL_USERNAME = 'jarvis.ai.kush@gmail.com',
-    MAIL_PASSWORD=  '8979266654'
+    MAIL_USERNAME = 'email_id',
+    MAIL_PASSWORD=  'Email Password'
 )
 mail = Mail(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:@localhost/koder"
 
 db = SQLAlchemy(app)
-
-
-# # ____________________________________________________________
-# from flask import Flask, render_template, request
-# from flask_sqlalchemy import SQLAlchemy
-# # from flask_mail import Mail
-# import json
-# from datetime import datetime
-#
-#
-# with open('config.json', 'r') as c:
-#     params = json.load(c)["params"]
-#
-# local_server = True
-#
-# app = Flask(__name__)
-#
-# if(local_server):
-#     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
-# else:
-#     app.config['SQLALCHEMY_DATABASE_URI'] = params['prod_uri']
-#
-# db = SQLAlchemy(app)
-# # _______________________________________________
 
 
 
@@ -173,10 +149,10 @@ def contact():
         db.session.commit()
         mail.send_message('New message from ' + name,
                           sender="email",
-                          recipients=["jarvis.ai.kush@gmail.com"],
+                          recipients=["Email_id"],
                           body = "Address:-"+"\n" + message + "\n" + str(phone))
         mail.send_message('Thank you for shopeing ' + name,
-                          sender="jarvis.ai.kush@gmail.com",
+                          sender="Email_id",
                           recipients=[email],
                           body="Thank you for odering" + "\n" + name + "\n" + "Your order id is this :-")
 
